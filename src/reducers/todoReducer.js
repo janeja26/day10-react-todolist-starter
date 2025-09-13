@@ -17,7 +17,9 @@ switch (action.type) {
       return todo;
   });
   case "ADD":
-    return [...state, { id: state.length + 1, text: action.text, done: false }];
+    return [...state, { id: new Date(), text: action.text, done: false }];
+  case "DELETE":
+    return state.filter((todo) => todo.id !== action.id);
   default:
     break;
 }

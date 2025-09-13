@@ -17,32 +17,40 @@ const TodoList = () => {
     dispatch({ type: 'ADD', text: inputValue });
     setInputValue('');
   }
+   function deleteTodo(id) {
+    // 发送删除动作到context
+    dispatch({ type: 'DELETE', id });
+  }
 
-  
+
   return (
+    <div className="todo-list">
+      <h3>Todo List</h3>
     <div className="todo-group">
-      <div className="Btitle">Todo List</div>
-      <div className="context">
+      {/* 当列表为空的时候这个p标签才展示 */}
+       {state.length === 0 && (
         <p>Add the things you need to do today...</p>
+      )}
         {/* 待办项列表现在放在maincontext容器内 */}
-        <div className="maincontext">
           {state.map(({ id, text, done }) => (
-            <div 
-              key={id}
-              className={`todo-item ${done ? 'done' : ''}`}
-              onClick={() => toggleDone(id)}
-            >
-              {text}
+            <div className="todo-items">
+              <div
+                key={id}
+                className={`todo-item ${done ? 'done' : ''}`}
+                onClick={() => toggleDone(id)}
+              >
+                {text}
+              </div>
+              <button className='delete-button' onClick={() => deleteTodo(id)}>X</button>
             </div>
           ))}
-        </div>
         <div className="input">
           <input
             type="text"
             value={inputValue}
             onChange={e => setInputValue(e.target.value)}
           />
-          <button onClick={addTodo}>add</button>
+          <button className='add-button' onClick={addTodo}>add</button>
         </div>
       </div>
     </div>
