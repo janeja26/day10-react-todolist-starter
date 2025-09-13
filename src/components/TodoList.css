@@ -1,0 +1,33 @@
+.todo-item {
+    width: 200px;
+    border: 1px solid black;
+    padding: 5px;
+    &.done {
+        text-decoration: line-through;
+    }
+}
+
+
+.todo-group {
+    justify-self: center;
+}
+
+.Btitle {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.input{
+    margin-top: 16px;
+}
+input{
+    width: 250px;
+}
+button{
+    font-size: 12px;
+    margin-left: 8px;
+    background-color: #6E94E5;
+    padding: 4px 15px;
+    color: white;
+    border: none;
+}
