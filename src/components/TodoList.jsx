@@ -2,9 +2,7 @@ import { useContext, useState } from 'react'
 import { TodoContext } from '../contexts/TodoContext'
 
 
- 
 const TodoList = () => {
-
   const { state, dispatch } = useContext(TodoContext);
   const [inputValue, setInputValue] = useState('');
 
@@ -26,6 +24,18 @@ const TodoList = () => {
       <div className="Btitle">Todo List</div>
       <div className="context">
         <p>Add the things you need to do today...</p>
+        {/* 待办项列表现在放在maincontext容器内 */}
+        <div className="maincontext">
+          {state.map(({ id, text, done }) => (
+            <div 
+              key={id}
+              className={`todo-item ${done ? 'done' : ''}`}
+              onClick={() => toggleDone(id)}
+            >
+              {text}
+            </div>
+          ))}
+        </div>
         <div className="input">
           <input
             type="text"
@@ -35,15 +45,6 @@ const TodoList = () => {
           <button onClick={addTodo}>add</button>
         </div>
       </div>
-      {state.map(({ id, text, done }) => (
-        <div
-          key={id}
-          className={`todo-item ${done ? 'done' : ''}`}
-          onClick={() => toggleDone(id)}
-        >
-          {text}
-        </div>
-      ))} 
     </div>
   );
 }
