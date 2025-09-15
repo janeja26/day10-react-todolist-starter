@@ -27,3 +27,9 @@ export const getTodoById = async (id) => {
   const response = await instance.get(`/todos/${id}`);
   return response;
 }
+
+
+export const deleteTodo = async (id) => {
+  const response = await instance.delete(`/todos/${id}`);
+  return response;
+}

@@ -23,6 +23,7 @@ const routes = [
       { path: "todos", element: <TodoList /> },
       { path: "todos/:key", element: <TodoDetail /> },
       { path: "about", element: <h1>About Us</h1> },
+      
     ],
   },
 ];
