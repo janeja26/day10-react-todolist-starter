@@ -11,7 +11,8 @@ import {
   useParams,
 } from "react-router";
 import { TodoContext } from "./contexts/TodoContext";
-import DefaultLayout from"./components/Layout"
+import DefaultLayout from"./components/Layout";
+import DonePage from './components/DonePage';
 
 const routes = [
   {
@@ -23,7 +24,7 @@ const routes = [
       { path: "todos", element: <TodoList /> },
       { path: "todos/:key", element: <TodoDetail /> },
       { path: "about", element: <h1>About Us</h1> },
-      
+      { path: "done", element: <DonePage /> }
     ],
   },
 ];

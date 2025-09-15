@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from "react-router";
 import { Layout, Menu } from "antd";
 import { Content, Footer, Header } from "antd/es/layout/layout";
-import{ SettingOutlined, HomeOutlined, ProfileOutlined } from '@ant-design/icons';
+import{ SettingOutlined, HomeOutlined, ProfileOutlined,CheckCircleOutlined } from '@ant-design/icons';
 
 const items = [
   {
@@ -18,6 +18,11 @@ const items = [
     key: "tododetail",
     label: <NavLink to={"todos/:key"}>TodoDetail</NavLink>,
     icon: <SettingOutlined />,
+  },
+   {
+    key: "done",
+    label: <NavLink to={"/done"}>Completed</NavLink>,
+    icon: <CheckCircleOutlined />, 
   },
   {
     key: "about",

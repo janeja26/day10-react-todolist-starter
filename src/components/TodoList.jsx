@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
 import { TodoContext } from '../contexts/TodoContext'
 import { addTodo, getTodos, updateTodo, getTodoById } from '../apis/api';
-import { Modal, Input, Button } from 'antd';
+import { Modal, Input, Button, Space } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 const { TextArea } = Input;
+const { Search } = Input;
 
 const TodoList = () => {
   const { state, dispatch } = useContext(TodoContext);
@@ -108,7 +109,7 @@ const TodoList = () => {
               {text}
             </div>
 
-        
+
             <Button
               type="text"
               danger
@@ -117,9 +118,9 @@ const TodoList = () => {
               onClick={() => handleDelete(id)}
               title="Delete"
             />
-            <Button 
-              type="text" 
-              icon={<EditOutlined />} 
+            <Button
+              type="text"
+              icon={<EditOutlined />}
               size="large"
               onClick={() => handleEdit({ id, text, done })}
               title="Edit"
@@ -127,14 +128,18 @@ const TodoList = () => {
           </div>
         ))}
         <div className="input">
-          
-          <Input placeholder="Input todo here"
-            type="text"
-            value={inputValue}
-            onChange={e => setInputValue(e.target.value)}
-          />
-          <div><Button type="primary" size="medium" onClick={handleSubmit}>Add</Button></div>
-          
+          <Space direction="vertical" size="middle">
+            <Space.Compact style={{ width: '100%' }}>
+              <Input defaultValue="Combine input and button" placeholder="Input todo here"
+                type="text"
+                value={inputValue}
+                onChange={e => setInputValue(e.target.value)} />
+              <Button type="primary" size="medium" onClick={handleSubmit}>Add</Button>
+            </Space.Compact>
+           
+          </Space>
+
+
         </div>
       </div>
 
@@ -155,13 +160,13 @@ const TodoList = () => {
         ]}
       >
         <>
-        <TextArea
-          value={editInputValue}
-          onChange={(e) => setEditInputValue(e.target.value)}
-          placeholder="Enter todo text"
-          rows={4}  
-          
-        />
+          <TextArea
+            value={editInputValue}
+            onChange={(e) => setEditInputValue(e.target.value)}
+            placeholder="Enter todo text"
+            rows={4}
+
+          />
           <br />
           <br />
         </>
